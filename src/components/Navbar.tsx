@@ -79,7 +79,7 @@ const Navbar = () => {
                 <Linkedin size={18} />
               </a>
               <a
-                href="https://www.facebook.com/share/1L3r3A9GYZ/"
+                href="https://www.facebook.com/profile.php?id=61576873247089&mibextid=rS40aB7S9Ucbxw6v"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 rounded-full bg-white/80 text-gray-600 hover:text-red-600 hover:bg-white transition-all duration-300 shadow-sm hover:shadow-md"
@@ -87,7 +87,7 @@ const Navbar = () => {
                 <Facebook size={18} />
               </a>
               <a
-                href="https://www.instagram.com/cognitimax_dma/?utm_source=ig_web_button_share_sheet"
+                href="https://www.instagram.com/cognitimax_dma"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 rounded-full bg-white/80 text-gray-600 hover:text-red-600 hover:bg-white transition-all duration-300 shadow-sm hover:shadow-md"
