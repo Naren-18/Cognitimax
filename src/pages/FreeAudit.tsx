@@ -856,9 +856,7 @@ const FreeAudit = () => {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button asChild size="lg" variant="secondary" className="text-red-600 font-semibold px-8 py-6 rounded-full shadow-lg hover:shadow-xl transition-all duration-300">
-              <Link to="/free-audit">Get Free Audit</Link>
-            </Button>
+           
             <Button asChild size="lg" variant="outline" className="border-white text-red-600  hover:shadow-xl font-semibold px-8 py-6 rounded-full shadow-lg hover:shadow-xl transition-all duration-300">
               <Link to="https://cognitimax.aidaform.com/client-intake-form">Contact Us</Link>
             </Button>

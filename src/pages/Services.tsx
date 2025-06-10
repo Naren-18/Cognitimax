@@ -266,37 +266,21 @@ const Services = () => {
         </div>
         
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-          <motion.h2 
-            initial={{ opacity: 0, y: -20 }}
-            animate={isIntersecting ? { opacity: 1, y: 0 } : { opacity: 0, y: -20 }}
-            transition={{ duration: 0.7 }}
-            className="text-3xl md:text-4xl font-bold mb-6 text-white"
-          >
+          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">
             Ready to Transform Your Digital Presence?
-          </motion.h2>
+          </h2>
           
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            animate={isIntersecting ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-            transition={{ duration: 0.7, delay: 0.2 }}
-            className="text-xl text-white/90 mb-8"
-          >
+          <p className="text-xl text-white/90 mb-8">
             Get a free consultation and discover how our services can drive your business growth.
-          </motion.p>
+          </p>
           
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={isIntersecting ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
-            transition={{ duration: 0.7, delay: 0.4 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center"
-          >
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button asChild size="lg" variant="secondary" className="text-red-600 font-semibold px-8 py-6 rounded-full shadow-lg hover:shadow-xl transition-all duration-300">
-              <Link to="/free-audit">Get Free Audit</Link>
+              <Link to="https://cognitimax.aidaform.com/client-intake-form">
+              Contact us
+              </Link>
             </Button>
-            <Button asChild size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-red-600 font-semibold px-8 py-6 rounded-full shadow-lg hover:shadow-xl transition-all duration-300">
-              <Link to="/">Contact Us</Link>
-            </Button>
-          </motion.div>
+          </div>
         </div>
       </section>
 
