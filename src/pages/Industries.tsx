@@ -8,10 +8,10 @@ import Footer from '@/components/Footer';
 
 // Industry images import
 const industryImages = {
-  health: 'https://images.unsplash.com/photo-1631815588090-d1bcbe9b4b01?q=80&w=600&auto=format&fit=crop',
+  health: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=600&auto=format&fit=crop',
   restaurant: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=600&auto=format&fit=crop',
   fitness: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=600&auto=format&fit=crop',
-  automotive: 'https://images.unsplash.com/photo-1567899378494-47b22a2ae96a?q=80&w=600&auto=format&fit=crop',
+  automotive: 'https://images.unsplash.com/photo-1580273916550-e323be2ae537?q=80&w=600&auto=format&fit=crop',
   technology: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=600&auto=format&fit=crop',
   realestate: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=600&auto=format&fit=crop',
   pet: 'https://images.unsplash.com/photo-1548199973-03cce0bbc87b?q=80&w=600&auto=format&fit=crop',
@@ -20,7 +20,8 @@ const industryImages = {
   education: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=600&auto=format&fit=crop',
   manufacturing: 'https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?q=80&w=600&auto=format&fit=crop',
   hospitality: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=600&auto=format&fit=crop',
-  legal: 'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?q=80&w=600&auto=format&fit=crop'
+  legal: 'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?q=80&w=600&auto=format&fit=crop',
+  agriculture: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=600&auto=format&fit=crop'
 };
 
 // Industry icons as SVG components for better quality
@@ -86,6 +87,11 @@ const IndustriesSection = () => {
       return () => clearInterval(timer);
     }
   }, [isIntersecting]);
+
+  // Add scroll to top on mount
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const industries = [
     {
@@ -165,7 +171,7 @@ const IndustriesSection = () => {
       icon: '🌾',
       color: 'from-lime-600 to-green-600',
       bgPattern: 'agriculture',
-      image: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=600&auto=format&fit=crop',
+      image: industryImages.agriculture,
     }
   ];
 
@@ -207,7 +213,7 @@ const IndustriesSection = () => {
           className={`text-center mb-16 transition-all duration-1000 ${isIntersecting ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
         >
           <div className="inline-block mb-4">
-            <span className="text-6xl animate-pulse">🎯</span>
+            {/* <span className="text-6xl animate-pulse">🎯</span> */}
           </div>
           <h2 className="text-5xl font-bold text-gray-900 mb-6">
             Industries We <span className="bg-gradient-to-r from-red-600 to-orange-500 bg-clip-text text-transparent">Transform</span>

@@ -1,4 +1,3 @@
-
 import { useEffect, useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -19,6 +18,18 @@ const hexagonClipPath = `
 .animate-fade-in {
   animation: fadeIn 0.5s ease-out forwards;
 }
+
+.service-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 1rem;
+  transition: transform 0.3s ease;
+}
+
+.service-card:hover .service-image {
+  transform: scale(1.05);
+}
 `;
 
 const ServicesSection = () => {
@@ -32,6 +43,7 @@ const ServicesSection = () => {
       document.head.removeChild(styleElement);
     };
   }, []);
+
   const [isIntersecting, setIsIntersecting] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
 
@@ -60,32 +72,32 @@ const ServicesSection = () => {
       description: 'Be seen. Get clicks. Drive growth. We blend long-term organic growth (SEO) with instant visibility through paid search ads (SEM).',
       features: ['Website Audit & Analysis', 'Keyword Research', 'On-Page Optimization', 'Technical SEO', 'Link Building', 'Local SEO'],
       link: '/services/seo',
-      icon: '🔍',
-      iconColor: 'from-red-500 to-orange-400'
+      image: '/seo.jpg',
+      gradient: 'from-red-500 to-orange-400'
     },
     {
       title: 'Pay-Per-Click',
       description: 'Get instant visibility. Pay only for results. PPC advertising quickly places your business at the top of search results.',
       features: ['Google ADS', 'Instagram ADS', 'Facebook ADS', 'Meta ADS', 'LinkedIn ADS', 'Geo-Targeting Ads'],
       link: '/services/ppc',
-      icon: '💰',
-      iconColor: 'from-orange-500 to-yellow-400'
+      image: '/ppc.jpg',
+      gradient: 'from-orange-500 to-yellow-400'
     },
     {
       title: 'Social Media Marketing',
       description: 'Connect, engage, and grow your brand. Social media is where your audience lives—we help you connect with them.',
       features: ['Strategy & Planning', 'Content Creation', 'Platform Management', 'Paid Ad Campaigns', 'Audience Growth', 'Performance Tracking'],
       link: '/services/social-media',
-      icon: '📱',
-      iconColor: 'from-red-600 to-pink-500'
+      image: '/lovable-uploads/ssm.png',
+      gradient: 'from-red-600 to-pink-500'
     },
     {
       title: 'Online Marketing',
       description: 'Reach, Engage, and Convert Your Audience. Comprehensive suite of services designed to build your brand.',
       features: ['Influencer Marketing', 'Content Marketing', 'Email Marketing', 'Video Marketing', 'Web Analysis', 'CRO', 'Online Reputation', 'AI & Automation'],
       link: '/services/online-marketing',
-      icon: '🌐',
-      iconColor: 'from-orange-600 to-red-500'
+      image: '/lovable-uploads/om.jpg',
+      gradient: 'from-orange-600 to-red-500'
     }
   ];
 
@@ -99,19 +111,6 @@ const ServicesSection = () => {
         <div 
           className={`absolute -right-20 bottom-1/4 w-96 h-96 bg-gradient-to-tl from-orange-100 to-red-50 rounded-full blur-3xl transition-all duration-1000 delay-300 ${isIntersecting ? 'opacity-50 scale-100' : 'opacity-0 scale-50'}`}
         ></div>
-        
-        {/* Multiple orbit lines inspired by logo */}
-        <div 
-          className={`absolute top-1/2 left-1/2 w-[140%] h-[140%] -translate-x-1/2 -translate-y-1/2 border border-red-200 rounded-full transition-all duration-1500 ${isIntersecting ? 'opacity-30 scale-100' : 'opacity-0 scale-0'}`}
-        ></div>
-        <div 
-          className={`absolute top-1/2 left-1/2 w-[120%] h-[120%] -translate-x-1/2 -translate-y-1/2 border border-orange-200 rounded-full transition-all duration-1800 delay-300 ${isIntersecting ? 'opacity-20 scale-100' : 'opacity-0 scale-0'}`}
-        ></div>
-        
-        {/* Decorative elements */}
-        <div className="absolute top-20 left-[10%] w-8 h-8 rotate-45 bg-red-100 opacity-40"></div>
-        <div className="absolute bottom-20 right-[10%] w-12 h-12 rotate-12 bg-orange-100 opacity-40"></div>
-        <div className="absolute top-[40%] right-[15%] w-6 h-6 rounded-full bg-gradient-to-r from-red-200 to-orange-200 opacity-40"></div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
@@ -126,7 +125,7 @@ const ServicesSection = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {services.map((service, index) => (
             <motion.div
               key={index}
@@ -135,23 +134,30 @@ const ServicesSection = () => {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className="flex flex-col h-full"
             >
-              <div className="group relative bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-500 overflow-hidden h-full flex flex-col">
-                {/* Hexagon icon container */}
-                <div className="relative mx-auto mt-8 mb-4">
-                  <div className={`w-20 h-20 bg-gradient-to-br ${service.iconColor} flex items-center justify-center clip-hexagon transform transition-transform duration-500 group-hover:scale-110 group-hover:rotate-12`}>
-                    <span className="text-4xl">{service.icon}</span>
-                  </div>
+              <div className="group relative bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-500 overflow-hidden h-full flex flex-col service-card">
+                {/* Service Image */}
+                <div className="relative w-full h-48 overflow-hidden">
+                  <img 
+                    src={service.image} 
+                    alt={service.title}
+                    className="service-image"
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      target.src = '/placeholder.svg';
+                    }}
+                  />
+                  <div className={`absolute inset-0 bg-gradient-to-b ${service.gradient} opacity-20`}></div>
                 </div>
                 
-                <div className="px-6 pt-2 pb-4 text-center flex-grow">
-                  <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-red-600 transition-colors">
+                <div className="px-6 pt-6 pb-4 text-center flex-grow">
+                  <h3 className="text-2xl font-bold text-gray-900 mb-3 group-hover:text-red-600 transition-colors">
                     {service.title}
                   </h3>
-                  <p className="text-gray-600 text-sm mb-6">
+                  <p className="text-gray-600 mb-6">
                     {service.description}
                   </p>
                   
-                  <div className="grid grid-cols-1 gap-2 mb-6">
+                  <div className="grid grid-cols-2 gap-3 mb-6">
                     {service.features.slice(0, 4).map((feature, featureIndex) => (
                       <motion.div 
                         key={featureIndex}

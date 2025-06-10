@@ -46,7 +46,7 @@ const Index = () => {
       <div className="relative z-10 bg-white">
         <AboutSection />
         <ServicesSection />
-        <StatsSection />
+        {/* <StatsSection /> */}
         <IndustriesSection />
       </div>
       

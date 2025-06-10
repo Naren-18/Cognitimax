@@ -1,4 +1,3 @@
-
 import { useState, useEffect, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -14,6 +13,7 @@ import Footer from '@/components/Footer';
 import { toast } from '@/hooks/use-toast';
 import { motion, useAnimation, useScroll, useTransform, useMotionValueEvent } from 'framer-motion';
 import { ArrowDown } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 // Animation variants
 const fadeIn = {
@@ -153,6 +153,11 @@ const FreeAudit = () => {
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
     console.log("Page scroll: ", latest);
   });
+
+  // Add scroll to top on mount
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const handleServiceChange = (service: string, checked: boolean) => {
     setFormData(prev => ({
@@ -839,104 +844,27 @@ const FreeAudit = () => {
         </div>
       </motion.section>
 
-      {/* Testimonials Section with animated testimonials */}
-      <motion.section 
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.3 }}
-        variants={staggerContainer}
-        className="py-20 bg-gradient-to-br from-blue-50 to-purple-50"
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div variants={itemVariant} className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">What Our Clients Say</h2>
-            <p className="text-lg text-gray-600">Real results from our free audit service</p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              {
-                quote: "The free audit revealed critical issues with our website that were holding back our rankings. After implementing the recommendations, our organic traffic increased by 78% in just three months!",
-                name: "Sarah Johnson",
-                company: "Fitness Studio Owner"
-              },
-              {
-                quote: "I was skeptical about a 'free' audit, but Cognitimax delivered incredible value. They found opportunities our previous agency missed completely.",
-                name: "Michael Chen",
-                company: "E-commerce Director"
-              },
-              {
-                quote: "The audit was comprehensive and eye-opening. We immediately understood why our campaigns weren't performing and what to fix. Worth every minute spent filling out the form.",
-                name: "Jennifer Williams",
-                company: "Healthcare Marketing Manager"
-              }
-            ].map((testimonial, index) => (
-              <motion.div
-                key={index}
-                variants={itemVariant}
-                whileHover={{ y: -10 }}
-                className="bg-white p-6 rounded-xl shadow-lg relative"
-              >
-                <motion.div 
-                  className="absolute -top-4 -left-4 text-4xl"
-                  animate={{ rotate: [0, 10, 0, -10, 0] }}
-                  transition={{ repeat: Infinity, duration: 5, ease: "easeInOut" }}
-                >
-                  "
-                </motion.div>
-                <p className="text-gray-600 mb-6 italic">"{testimonial.quote}"</p>
-                <div className="flex items-center">
-                  <div className="w-10 h-10 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center text-white font-bold">
-                    {testimonial.name.charAt(0)}
-                  </div>
-                  <div className="ml-3">
-                    <h4 className="font-semibold text-gray-900">{testimonial.name}</h4>
-                    <p className="text-sm text-gray-500">{testimonial.company}</p>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
+      {/* CTA Section */}
+      <section className="py-20 bg-gradient-to-br from-red-600 to-orange-500">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">
+            Ready to Transform Your Digital Presence?
+          </h2>
+          
+          <p className="text-xl text-white mb-8">
+            Get a free consultation and discover how our services can drive your business growth.
+          </p>
+          
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button asChild size="lg" variant="secondary" className="text-red-600 font-semibold px-8 py-6 rounded-full shadow-lg hover:shadow-xl transition-all duration-300">
+              <Link to="/free-audit">Get Free Audit</Link>
+            </Button>
+            <Button asChild size="lg" variant="outline" className="border-white text-red-600  hover:shadow-xl font-semibold px-8 py-6 rounded-full shadow-lg hover:shadow-xl transition-all duration-300">
+              <Link to="https://cognitimax.aidaform.com/client-intake-form">Contact Us</Link>
+            </Button>
           </div>
         </div>
-      </motion.section>
-
-      {/* CTA Section with animated button */}
-      <motion.section 
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.3 }}
-        variants={staggerContainer}
-        className="py-16 bg-white"
-      >
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.h2 
-            variants={itemVariant}
-            className="text-3xl font-bold text-gray-900 mb-4"
-          >
-            Ready to Unlock Your Digital Potential?
-          </motion.h2>
-          <motion.p 
-            variants={itemVariant}
-            className="text-xl text-gray-600 mb-8"
-          >
-            Fill out the form above to get your free, comprehensive digital marketing audit
-          </motion.p>
-          <motion.div 
-            variants={itemVariant}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <Button 
-              onClick={() => {
-                document.getElementById('form-section')?.scrollIntoView({ behavior: 'smooth' });
-              }}
-              className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-lg px-8 py-6"
-            >
-              Get My Free Audit Now
-            </Button>
-          </motion.div>
-        </div>
-      </motion.section>
+      </section>
 
       <Footer />
     </div>
