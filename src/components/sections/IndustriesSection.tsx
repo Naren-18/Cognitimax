@@ -22,20 +22,9 @@ const industryImages = {
   agriculture: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=600&auto=format&fit=crop'
 };
 
-// Industry icons as SVG components for better quality
-const IndustryIcon = ({ type }: { type: string }) => {
-  const iconMap: {[key: string]: React.ReactNode} = {
-    health: <span className="text-4xl">🏥</span>,
-    restaurant: <span className="text-4xl">🍽️</span>,
-    fitness: <span className="text-4xl">💪</span>,
-    automotive: <span className="text-4xl">🚗</span>,
-    technology: <span className="text-4xl">💻</span>,
-    realestate: <span className="text-4xl">🏠</span>,
-    pet: <span className="text-4xl">🐾</span>,
-    beauty: <span className="text-4xl">💄</span>
-  };
-  
-  return iconMap[type] || <span className="text-4xl">🌟</span>;
+// Industry component placeholder (completely removed)
+const IndustryPlaceholder = () => {
+  return null;
 };
 
 const IndustriesSection = () => {
@@ -161,7 +150,7 @@ const IndustriesSection = () => {
       title: 'Agriculture Suppliers',
       description: 'Reach farmers and agricultural businesses with targeted B2B marketing strategies.',
       details: 'Agricultural equipment marketing, seasonal campaigns, farmer education content, and supply chain optimization.',
-      icon: '🌾',
+      icon: 'agriculture',
       color: 'from-lime-600 to-green-600',
       bgPattern: 'agriculture',
       image: industryImages.agriculture,
@@ -203,9 +192,8 @@ const IndustriesSection = () => {
         {/* Header Section */}
         <div 
           className={`text-center mb-16 transition-all duration-1000 ${isIntersecting ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
-        >
-          <div className="inline-block mb-4">
-            <span className="text-6xl animate-pulse">🎯</span>
+        >          <div className="inline-block mb-4">
+            {/* Target icon removed */}
           </div>
           <h2 className="text-5xl font-bold text-gray-900 mb-6">
             Industries We <span className="bg-gradient-to-r from-red-600 to-orange-500 bg-clip-text text-transparent">Transform</span>
@@ -218,7 +206,7 @@ const IndustriesSection = () => {
           <div className="max-w-md mx-auto mb-8">
             <input
               type="text"
-              placeholder="🔍 Search industries..."
+              placeholder="Search industries..."
               value={filterTerm}
               onChange={(e) => setFilterTerm(e.target.value)}
               className="w-full px-6 py-3 border-2 border-gray-200 rounded-full focus:border-red-500 focus:outline-none transition-colors text-center"
@@ -242,10 +230,7 @@ const IndustriesSection = () => {
               ></div>
               
               <div className="relative z-20 p-10 md:p-16 flex flex-col md:flex-row items-center md:items-start text-white">
-                <div className="md:w-1/2 text-center md:text-left mb-8 md:mb-0 md:pr-8">
-                  <div className="inline-flex items-center justify-center w-20 h-20 mb-6 rounded-full bg-gradient-to-br from-red-600/90 to-orange-500/90 shadow-lg">
-                    <IndustryIcon type={filteredIndustries[activeIndustry].icon} />
-                  </div>
+                <div className="md:w-1/2 text-center md:text-left mb-8 md:mb-0 md:pr-8">                  {/* Icon container removed */}
                   
                   <h3 className="text-3xl md:text-4xl font-bold mb-4">
                     {filteredIndustries[activeIndustry].title}
@@ -304,10 +289,7 @@ const IndustriesSection = () => {
                     />
                     <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/70"></div>
                     
-                    {/* Icon overlay */}
-                    <div className="absolute top-4 right-4 w-12 h-12 rounded-full bg-gradient-to-br from-white/90 to-white/70 flex items-center justify-center shadow-lg transform transition-transform duration-500 group-hover:scale-110 group-hover:rotate-12">
-                      <IndustryIcon type={industry.icon} />
-                    </div>
+                    
                   </div>
                   
                   {/* Content section */}

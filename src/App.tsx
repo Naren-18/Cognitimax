@@ -14,6 +14,7 @@ import SocialMediaService from "./pages/SocialMediaService";
 import OnlineMarketingService from "./pages/OnlineMarketingService";
 import FreeAudit from "./pages/FreeAudit";
 import NotFound from "./pages/NotFound";
+import CyberSecurityService from "./pages/CyberSecurityService";
 
 const queryClient = new QueryClient();
 
@@ -44,6 +45,7 @@ const App = () => {
               <Route path="/services/ppc" element={<PPCService />} />
               <Route path="/services/social-media" element={<SocialMediaService />} />
               <Route path="/services/online-marketing" element={<OnlineMarketingService />} />
+              <Route path="/services/cyber-security" element={<CyberSecurityService />} />
               <Route path="/free-audit" element={<FreeAudit />} />
               <Route path="*" element={<NotFound />} />
             </Routes>

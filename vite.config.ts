@@ -8,6 +8,9 @@ import { componentTagger } from "lovable-tagger";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
+// Generate timestamp for cache busting
+const timestamp = new Date().getTime();
+
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }: { mode: string }) => ({
   server: {
@@ -32,6 +35,12 @@ export default defineConfig(({ mode }: { mode: string }) => ({
     rollupOptions: {
       // Ensure index.html is copied to all routes
       input: path.resolve(__dirname, 'index.html'),
+      output: {
+        // Add timestamp to file names to prevent caching
+        entryFileNames: `assets/[name]-[hash]-${timestamp}.js`,
+        chunkFileNames: `assets/[name]-[hash]-${timestamp}.js`,
+        assetFileNames: `assets/[name]-[hash]-${timestamp}.[ext]`
+      }
     },
   },
 }));

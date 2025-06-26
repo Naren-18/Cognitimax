@@ -1,4 +1,3 @@
-
 import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 
@@ -70,6 +69,7 @@ const Footer = () => {
               <li><Link to="/services/ppc" className="hover:text-white transition-colors">Pay-Per-Click</Link></li>
               <li><Link to="/services/social-media" className="hover:text-white transition-colors">Social Media Marketing</Link></li>
               <li><Link to="/services/online-marketing" className="hover:text-white transition-colors">Online Marketing</Link></li>
+              <li><Link to="/services/cyber-security" className="hover:text-white transition-colors">Cyber Security</Link></li>
             </ul>
           </div>
 
@@ -105,7 +105,7 @@ const Footer = () => {
         <div 
           className={`border-t border-gray-800 mt-8 pt-8 text-center text-sm text-gray-400 transition-all duration-1000 delay-800 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
         >
-          <p>&copy; 2024 Cognitimax. All rights reserved. <span className="bg-gradient-to-r from-red-500 to-orange-500 bg-clip-text text-transparent">Built for digital success.</span></p>
+          <p>&copy; 2025 Cognitimax. All rights reserved. <span className="bg-gradient-to-r from-red-500 to-orange-500 bg-clip-text text-transparent">Built for digital success.</span></p>
         </div>
       </div>
     </footer>

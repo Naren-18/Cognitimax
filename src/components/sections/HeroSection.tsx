@@ -134,7 +134,7 @@ const HeroSection = () => {
             </div>
 
             {/* Stats - Better alignment */}
-            <div className="grid grid-cols-3 gap-8 pt-8">
+            {/* <div className="grid grid-cols-3 gap-8 pt-8">
               {[
                 { number: '500+', label: 'Projects Completed' },
                 { number: '98%', label: 'Client Success Rate' },
@@ -149,7 +149,7 @@ const HeroSection = () => {
                   </div>
                 </div>
               ))}
-            </div>
+            </div> */}
           </div>
 
           {/* Right Side - Service Placards */}
