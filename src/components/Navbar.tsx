@@ -130,7 +130,8 @@ const Navbar = () => {
                 { path: '/', label: 'Home', icon: '🏠' },
                 { path: '/services', label: 'Services', icon: '⚡' },
                 { path: '/industries', label: 'Industries', icon: '🏭' },
-                { path: '/free-audit', label: 'Free Audit', icon: '📊' }
+                { path: '/free-audit', label: 'Free Audit', icon: '📊' },
+                { path: '/services/cyber-security', label: 'Cyber Security', icon: '🛡️'   }
               ].map((item) => (
                 <Link
                   key={item.path}
@@ -146,14 +147,7 @@ const Navbar = () => {
                   {item.label}
                 </Link>
               ))}
-              <Link
-                to="/services/cyber-security"
-                className="flex items-center px-4 py-3 rounded-lg text-base font-bold bg-gradient-to-r from-gray-900 to-red-600 text-white shadow-lg border-2 border-red-600 mt-2 hover:from-red-700 hover:to-orange-600 transition-all duration-300"
-                onClick={() => setIsOpen(false)}
-              >
-                <span className="mr-3">🛡️</span>
-                Cyber Security
-              </Link>
+             
 
               {/* Mobile Social Media Icons */}
               <div className="flex items-center space-x-3 px-4 py-3 border-t border-gray-200 mt-2">
